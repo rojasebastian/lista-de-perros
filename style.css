@@ -82,3 +82,11 @@ button:hover {
 .escondido {
   display: none;
 }
+
+#contadoresContainer {
+  display: flex;
+  gap: 2rem;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
