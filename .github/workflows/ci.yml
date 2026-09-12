@@ -1,0 +1,36 @@
+name: CI - Validación básica
+
+# Se ejecuta automáticamente:
+# - En cada push a la rama develop (integración continua del equipo)
+# - En cada Pull Request que apunte a main (control de calidad antes de producción)
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validar:
+    name: Validar código del proyecto
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validar sintaxis de JavaScript
+        run: node --check index.js
+
+      - name: Validar estructura de HTML (HTMLHint)
+        run: npx --yes htmlhint index.html
+
+      - name: Validar estilos CSS (Stylelint)
+        run: npx --yes stylelint style.css --config '{"rules":{}}'
+
+      - name: Resultado
+        run: echo "✅ Validaciones completadas correctamente"
