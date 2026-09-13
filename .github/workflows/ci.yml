@@ -30,7 +30,7 @@ jobs:
         run: npx --yes htmlhint index.html
 
       - name: Validar estilos CSS (Stylelint)
-        run: npx --yes stylelint style.css --config '{"rules":{}}'
+        run: run: npx --yes stylelint style.css
 
       - name: Resultado
         run: echo "✅ Validaciones completadas correctamente"
