@@ -16,6 +16,9 @@ document.getElementById("dislike").addEventListener("click", () => {
   rankearPerro("-");
 });
 document.getElementById("saltear").addEventListener("click", nuevoPerro);
+document.getElementById("modoOscuro").addEventListener("click", () => {
+  document.body.classList.toggle("oscuro");
+});
 perroActualElement.addEventListener("load", () => {
   spinner.classList.toggle("escondido", true);
   perroActualElement.classList.toggle("escondido", false);
