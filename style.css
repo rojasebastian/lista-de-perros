@@ -83,10 +83,27 @@ button:hover {
   display: none;
 }
 
+
 #contadoresContainer {
   display: flex;
   gap: 2rem;
   font-size: large;
   font-weight: bold;
   margin-top: 0.5rem;
+}
+
+#modoOscuro {
+  align-self: flex-end;
+  margin: 1rem 1rem 0 0;
+  font-size: large;
+  background: unset;
+}
+
+body.oscuro {
+  background-color: #1a1a1a;
+  color: #eee;
+}
+
+body.oscuro .perrosContainer img {
+  filter: brightness(0.9);
 }
