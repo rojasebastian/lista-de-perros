@@ -40,8 +40,17 @@ async function nuevoPerro() {
   const res = await fetch("https://dog.ceo/api/breeds/image/random");
   const jsonRes = await res.json();
   if (jsonRes.status === "success") {
-    perroActual = jsonRes.message;
-    perroActualElement.src = perroActual;
+    const nuevaUrl = jsonRes.message;
+    if (nuevaUrl === perroActual) {
+      // Bugfix: si la API devuelve la misma URL que ya está cargada, el navegador
+      // no vuelve a disparar el evento "load" (el src no cambia), y el spinner
+      // quedaba visible para siempre. Forzamos manualmente el estado "cargado".
+      spinner.classList.toggle("escondido", true);
+      perroActualElement.classList.toggle("escondido", false);
+    } else {
+      perroActual = nuevaUrl;
+      perroActualElement.src = perroActual;
+    }
   } else {
     nuevoPerro();
   }
